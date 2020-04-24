@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Mars Data</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="heading">Latest Mars News: {{news_title}}{{teaser}}</h4>
+                <small>{{teaser}}</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <img src={{featured_jpg_img}} class="img-fluid">
+            <div class="col-md-4">
+
+                <!-- <Current Weather input> -->
+                    <!-- Mars Facts  -->
+                <h6 class="heading">Mars Facts</h6>
+                <table class="table">{{mfacts_df}}</table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
