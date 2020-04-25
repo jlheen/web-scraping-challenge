@@ -9,7 +9,8 @@ def init_browser():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
-def scrape():
+def scrape_info():
+
     browser = init_browser()
 
     # Initial url to visit
@@ -20,8 +21,8 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     list_item = soup.select_one('ul.item_list li.slide')
-    news_title = list_item.find('div', class_='content_title')
-    teaser = list_item.find('div', class_='article_teaser_body')
+    news_title = browser.find_by_tag('div[class="content_title"]')
+    teaser = browser.find_by_tag('div[class="article_teaser_body"]')
 
     # Featured Images
     image_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
@@ -63,7 +64,7 @@ def scrape():
     # Caputring the titles (one)
     head = browser.find_by_tag('div[class="collapsible results"]')
     div = browser.find_by_tag('div[class="item"]')[0]
-    title_1 = div.find_by_tag('h3')
+    title_1 = div.find_by_tag('h3').text
     # Clicking to the images (one)
     head = browser.find_by_tag('div[class="collapsible results"]')
     div = browser.find_by_tag('div[class="description"]')[0]
@@ -81,7 +82,7 @@ def scrape():
     # Capturing the titles (two)
     head = browser.find_by_tag('div[class="collapsible results"]')
     div = browser.find_by_tag('div[class="item"]')[1]
-    title_2 = div.find_by_tag('h3')
+    title_2 = div.find_by_tag('h3').text
     # Clicking to the images (two)
     head = browser.find_by_tag('div[class="collapsible results"]')
     div = browser.find_by_tag('div[class="description"]')[1]
@@ -99,7 +100,7 @@ def scrape():
     # Capturing the titles (three)
     head = browser.find_by_tag('div[class="collapsible results"]')
     div = browser.find_by_tag('div[class="item"]')[2]
-    title_3 = div.find_by_tag('h3')
+    title_3 = div.find_by_tag('h3').text
     # Clicking to the images (three)
     head = browser.find_by_tag('div[class="collapsible results"]')
     div = browser.find_by_tag('div[class="description"]')[2]
@@ -117,7 +118,7 @@ def scrape():
     # Capturing the titles (4)
     head = browser.find_by_tag('div[class="collapsible results"]')
     div = browser.find_by_tag('div[class="item"]')[3]
-    title_4 = div.find_by_tag('h3')
+    title_4 = div.find_by_tag('h3').text
     # Clicking to the images (four)
     head = browser.find_by_tag('div[class="collapsible results"]')
     div = browser.find_by_tag('div[class="description"]')[3]
@@ -131,11 +132,21 @@ def scrape():
 
     # All hemisphere data dictionary
     hemis_dict = [
-    {"title": {title_1}, "img_url": {image1_url}},
-    {"title": {title_2}, "img_url": {image2_url}},
-    {"title": {title_3}, "img_url": {image3_url}},
-    {"title": {title_4}, "img_url": {image4_url}}
+    {"title": title_1, "img_url": image1_url},
+    {"title": title_2, "img_url": image2_url},
+    {"title": title_3, "img_url": image3_url},
+    {"title": title_4, "img_url": image4_url}
 ]
+
+    mars_data = {
+        # "date_stamp": 
+        "news_title": news_title,
+        "teaser": teaser,
+        "featured_image": featured_jpg_img,
+        # "Mars Weather": mars_weather,
+        "mars_facts": mfacts_df,
+        "hemispheres": hemis_dict
+    }
 
     browser.quit()
 
