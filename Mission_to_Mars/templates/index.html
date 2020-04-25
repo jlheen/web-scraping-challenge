@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Mars Data</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <h4 class="heading">Latest Mars News: {{mars.news_title}}</h4> -->
+                <small>{{mars.teaser}}</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <img src={{featured_jpg_img}} class="img-fluid">
+            <div class="col-md-4">
+
+                <!-- <Current Weather input> -->
+                    <!-- Mars Facts  -->
+                <h6 class="heading">Mars Facts</h6>
+                <p>{{mars.mars_tables}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="rounded float-left">
+                    <p class="font-weight-bold">{hemis_dict.title_1}</p>
+                    <img src="{hemis_dict.image1_url}" class="img-fluid" alt="Responsive image" style="width:100%">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    <div class="rounded float-right">
+                        <p class="font-weight-bold">{hemis_dict.title_2}</p>
+                        <img src="{hemis_dict.image2_url}" class="img-fluid" alt="Responsive image" style="width:100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="rounded float-left">
+                    <p class="font-weight-bold">{hemis_dict.title_3}</p>
+                    <img src="{hemis_dict.image3_url}" class="img-fluid" alt="Responsive image" style="width:100%">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    <div class="rounded float-right">
+                        <p class="font-weight-bold">{hemis_dict.title_4}</p>
+                        <img src="{hemis_dict.image4_url}" class="img-fluid" alt="Responsive image" style="width:100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
